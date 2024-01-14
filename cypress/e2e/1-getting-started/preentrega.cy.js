@@ -45,6 +45,7 @@ describe('PreEntrega', () => {
     shoppingCartPage.verifyQuantity('Patanlon Pijama Rojo', '1');
 
     shoppingCartPage.clickShowTotalPrice();
+    shoppingCartPage.verifyQuantityTotal();
     
   });
 });
