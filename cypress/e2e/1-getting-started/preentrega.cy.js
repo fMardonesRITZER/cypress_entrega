@@ -3,7 +3,6 @@ import { ProductsPage } from '../../pages/productsPage';
 import { ShoppingCartPage } from '../../pages/shoppingCartPage';
 import { LoginPage } from '../../pages/loginPage';
 
-
 describe('PreEntrega', () => {
   let loginPage = new LoginPage();
   let productsPage = new ProductsPage();
@@ -19,34 +18,57 @@ describe('PreEntrega', () => {
   });
 
   beforeEach(() => {
-    cy.visit('')
+    cy.visit('/');
     cy.get('#registertoggle').dblclick();
-    loginPage.escribirUsuario(Cypress.env().usuario)
-    loginPage.escribirContraseña(Cypress.env().password)
+    loginPage.escribirUsuario(Cypress.env().usuario);
+    loginPage.escribirContraseña(Cypress.env().password);
     loginPage.clickLogIn();
-});
-  
-
-  it('Unico Test', () => {
-    productsPage.clickProductsPage();
-    productsPage.addProductsPage();
-    productsPage.addProductsPage();
-    productsPage.addProductsPages();
-    productsPage.buttonProductsPage();
-
-    //Primer producto
-    shoppingCartPage.verifyPriceForProduct('Buzo Negro', '23.76');
-    shoppingCartPage.verifyTotalPrice('Buzo Negro', '47.52');
-    shoppingCartPage.verifyQuantity('Buzo Negro', '2');
-
-    // Para el segundo producto
-    shoppingCartPage.verifyPriceForProduct('Patanlon Pijama Rojo', '12.23');
-    shoppingCartPage.verifyTotalPrice('Patanlon Pijama Rojo', '12.23');
-    shoppingCartPage.verifyQuantity('Patanlon Pijama Rojo', '1');
-
-    shoppingCartPage.clickShowTotalPrice();
-    shoppingCartPage.verifyQuantityTotal();
-    
   });
-});
 
+
+it('Unico Test', () => {
+  productsPage.clickProductsPage();
+
+  //Agregar productos al carrito usando datos del JSON
+  productsPage.addProductBuzoNegro(); 
+  productsPage.addProductBuzoNegro();
+  productsPage.addProductOtroProducto();
+  productsPage.buttonProductsPage();
+
+  shoppingCartPage.verifyPriceForProduct(
+    products.product1.name,
+    products.product1.price
+  );
+
+  shoppingCartPage.verifyTotalPrice(
+    products.product1.name,
+    (parseFloat(products.product1.price) * products.product1.quantity).toFixed(2)
+  );
+
+  shoppingCartPage.verifyQuantity(
+    products.product1.name,
+    products.product1.quantity.toString()
+  );
+
+  shoppingCartPage.verifyPriceForProduct(
+    products.product2.name,
+    products.product2.price
+  );
+
+  shoppingCartPage.verifyTotalPrice(
+    products.product2.name,
+    (parseFloat(products.product2.price) * products.product2.quantity).toFixed(2)
+  );
+
+  shoppingCartPage.verifyQuantity(
+    products.product2.name,
+    products.product2.quantity.toString()
+  );
+
+  shoppingCartPage.clickShowTotalPrice();
+  shoppingCartPage.verifyQuantityTotal(
+    (parseFloat(products.product1.price) * products.product1.quantity +
+      parseFloat(products.product2.price) * products.product2.quantity).toFixed(2)
+  );
+});
+});
