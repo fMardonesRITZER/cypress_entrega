@@ -28,11 +28,9 @@ describe('PreEntrega', () => {
 
 it('Unico Test', () => {
   productsPage.clickProductsPage();
-
-  //Agregar productos al carrito usando datos del JSON
-  productsPage.addProductBuzoNegro(); 
-  productsPage.addProductBuzoNegro();
-  productsPage.addProductOtroProducto();
+  productsPage.addProduct('1000');
+  productsPage.addProduct('1000');
+  productsPage.addProduct('1006');
   productsPage.buttonProductsPage();
 
   shoppingCartPage.verifyPriceForProduct(
