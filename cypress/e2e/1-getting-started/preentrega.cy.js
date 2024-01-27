@@ -28,9 +28,8 @@ describe('PreEntrega', () => {
 
 it('Unico Test', () => {
   productsPage.clickProductsPage();
-  productsPage.addProduct('1000');
-  productsPage.addProduct('1000');
-  productsPage.addProduct('1006');
+  productsPage.addProduct(products.product1.name);
+  productsPage.addProduct(products.product2.name);
   productsPage.buttonProductsPage();
 
   shoppingCartPage.verifyPriceForProduct(

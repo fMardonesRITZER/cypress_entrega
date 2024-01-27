@@ -1,12 +1,12 @@
 {
-    "product1": {
-      "name": "Buzo Negro",
-      "price": "23.76",
-      "quantity": 2
-    },
-    "product2": {
-      "name": "Patanlon Pijama Rojo",
-      "price": "12.23",
-      "quantity": 1
-    }
+  "product1": {
+    "name": "Buzo Negro",
+    "price": "23.76",
+    "quantity": 2
+  },
+  "product2": {
+    "name": "Patanlon Pijama Rojo",
+    "price": "12.23",
+    "quantity": 1
   }
+}
