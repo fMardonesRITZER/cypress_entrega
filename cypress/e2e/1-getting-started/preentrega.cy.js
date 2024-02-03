@@ -28,9 +28,9 @@ describe('PreEntrega', () => {
 
 it('Unico Test', () => {
   productsPage.clickProductsPage();
-  productsPage.addProduct("Buzo Negro");
-  productsPage.addProduct("Buzo Negro");
-  productsPage.addProduct("Patanlon Pijama Rojo");
+  productsPage.addProduct(products.product1.name);
+  productsPage.addProduct(products.product1.name);
+  productsPage.addProduct(products.product2.name);
   productsPage.buttonProductsPage();
 
   shoppingCartPage.verifyPriceForProduct(
