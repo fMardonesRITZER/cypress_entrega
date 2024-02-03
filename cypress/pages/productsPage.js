@@ -3,11 +3,10 @@ export class ProductsPage {
     cy.get('#onlineshoplink').click();
   }
 
-  addProduct(productName) {
-    cy.get(`[data-cy="add-to-cart-${productName}"] > .tabler-icon`).click();
+  addProduct(producto) {
+    cy.get(`[name="${producto}"]`).click();
     cy.get('#closeModal').click();
   }
-
   buttonProductsPage() {
     cy.get('.css-1ktw94t > [data-cy="goShoppingCart"]').click();
   }
