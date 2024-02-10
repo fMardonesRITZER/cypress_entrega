@@ -40,4 +40,10 @@ export class ShoppingCartPage {
       .invoke('text')
       .should('eq', expectedTotal);
   }
+
+
+  checkOutPage() {
+    cy.get('[data-cy="goCheckout"]').click();
+  }
+  
 }

@@ -2,11 +2,13 @@ import 'cypress-xpath';
 import { ProductsPage } from '../../pages/productsPage';
 import { ShoppingCartPage } from '../../pages/shoppingCartPage';
 import { LoginPage } from '../../pages/loginPage';
+import { CheckoutPage } from '../../pages/checkoutPage';
 
 describe('PreEntrega', () => {
   let loginPage = new LoginPage();
   let productsPage = new ProductsPage();
   let shoppingCartPage = new ShoppingCartPage();
+  let checkoutPage = new CheckoutPage();
   let products;
 
   before(() => {
@@ -68,5 +70,12 @@ it('Unico Test', () => {
     (parseFloat(products.product1.price) * products.product1.quantity +
       parseFloat(products.product2.price) * products.product2.quantity).toFixed(2)
   );
+
+  
+shoppingCartPage.checkOutPage();
+checkoutPage.completarFormulario('test', 'test' , '1234561234567891')
+
+
+
 });
 });
