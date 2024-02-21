@@ -15,6 +15,7 @@ describe('PreEntrega', () => {
   let products;
   const baseUrl = 'https://pushing-it.onrender.com';
   let token;
+  let userId;
 
   before(() => {
     cy.fixture('shopCart.json').then((data) => {
@@ -73,6 +74,22 @@ describe('PreEntrega', () => {
     });
   });
 
+  afterEach(() => {
+    if (userId) {
+      
+      cy.request({
+        method: "DELETE",
+        url: `${baseUrl}/api/user/${userId}`,
+        headers: {
+          "authorization": `Bearer ${token}`
+        }
+      }).then(response => {
+        expect(response.status).to.equal(200);
+      });
+    }
+  });
+
+
   it('Unico Test', () => {
     productsPage.addProduct(products.product1.name);
     productsPage.addProduct(products.product1.name);
@@ -124,3 +141,4 @@ describe('PreEntrega', () => {
     reciptPage.getButtonRecipt();
   });
 });
+
