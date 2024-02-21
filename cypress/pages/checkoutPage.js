@@ -3,7 +3,7 @@ export class CheckoutPage {
         this.firstNameInput = '#FirstName'
         this.lastNameInput = '#lastName'
         this.cardNumberInput = '#cardNumber'
-        this.purchaseButton = '[data-cy="purchase"]';
+        this.purchaseButton = '[data-cy="purchase"]'
         this.errorMessage = '#errorMessage'
     };
 
@@ -12,7 +12,6 @@ export class CheckoutPage {
         cy.get(this.lastNameInput).type(apellido);
         cy.get(this.cardNumberInput).type(tarjeta);
         cy.get(this.purchaseButton).click();
-
     }
 
     getErrorMessage() {
